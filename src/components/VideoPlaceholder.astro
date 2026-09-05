@@ -1,0 +1,128 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  youtubeId: string | null;
+}
+
+const { id, title, youtubeId } = Astro.props;
+---
+
+<div class="video-frame">
+  {youtubeId ? (
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+      title={title}
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  ) : (
+    <div class="video-empty" role="img" aria-label={`Espacio reservado para ${title}`}>
+      <div class="video-interface" aria-hidden="true">
+        <span class="video-url">youtube.com / {id}</span>
+        <span class="play-button">▶</span>
+        <span class="video-progress"></span>
+      </div>
+      <strong>Espacio para video</strong>
+      <span>Agregá el ID de YouTube en <code>src/data/videos.ts</code></span>
+    </div>
+  )}
+</div>
+
+<style>
+  .video-frame {
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 8px solid var(--navy-deep);
+    border-radius: 22px;
+    background: var(--navy-deep);
+    box-shadow: var(--shadow);
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-empty {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    overflow: hidden;
+    background: linear-gradient(145deg, var(--navy), var(--blue));
+    color: var(--white);
+    text-align: center;
+  }
+
+  .video-empty::before,
+  .video-empty::after {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    content: "";
+  }
+
+  .video-empty::before { width: 300px; height: 300px; left: -170px; bottom: -140px; }
+  .video-empty::after { width: 220px; height: 220px; right: -120px; top: -80px; }
+
+  .video-interface {
+    position: absolute;
+    inset: 0;
+  }
+
+  .video-url {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.13);
+    padding: 6px 12px;
+    font-size: 0.65rem;
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 66px;
+    height: 66px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--navy);
+    font-size: 1.4rem;
+    transform: translate(-50%, -76%);
+  }
+
+  .video-progress {
+    position: absolute;
+    right: 18px;
+    bottom: 16px;
+    left: 18px;
+    height: 4px;
+    border-radius: 9px;
+    background: linear-gradient(90deg, var(--yellow) 28%, rgba(255, 255, 255, 0.28) 28%);
+  }
+
+  .video-empty > strong,
+  .video-empty > span {
+    position: relative;
+    z-index: 2;
+    margin-top: 72px;
+  }
+
+  .video-empty > span {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.72rem;
+  }
+
+  code { color: var(--yellow); }
+</style>

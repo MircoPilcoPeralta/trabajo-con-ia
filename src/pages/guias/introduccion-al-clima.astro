@@ -1,0 +1,168 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import temperatureIcon from "../../../assets/temperatura.svg";
+import pressureIcon from "../../../assets/presion.svg";
+import humidityIcon from "../../../assets/humedad.svg";
+import precipitationIcon from "../../../assets/precipitacion.svg";
+import windIcon from "../../../assets/viento.svg";
+import solarEnergyIcon from "../../../assets/energia solar.svg";
+import altitudeIcon from "../../../assets/altitud.svg";
+
+const elements = [
+  { icon: temperatureIcon, title: "Temperatura", unit: "°C", color: "#d32011", description: "Mide el estado térmico del aire. Surge del balance entre radiación recibida, emitida y transferida.", relation: "Energía cinética molecular" },
+  { icon: pressureIcon, title: "Presión", unit: "hPa", color: "#006dff", description: "Es la fuerza ejercida por la columna de aire. Disminuye notablemente con la altitud.", relation: "Fuerza por unidad de área" },
+  { icon: humidityIcon, title: "Humedad", unit: "%", color: "#06a890", description: "Expresa cuánto vapor de agua contiene el aire respecto del máximo posible a esa temperatura.", relation: "Vapor y cambios de fase" },
+  { icon: precipitationIcon, title: "Precipitación", unit: "mm", color: "#00357b", description: "Agua líquida o sólida que cae cuando las gotas o cristales superan la sustentación de las corrientes.", relation: "Condensación y gravedad" },
+  { icon: windIcon, title: "Viento", unit: "km/h", color: "#ff8a34", description: "Movimiento del aire impulsado principalmente por diferencias horizontales de presión.", relation: "Gradiente de presión" },
+];
+---
+
+<BaseLayout
+  title="Introducción al clima | Guía didáctica"
+  description="Fundamentos físicos y químicos de la temperatura, presión, humedad, precipitación y viento."
+>
+  <section class="theory-hero">
+    <div class="shell theory-grid">
+      <div>
+        <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a><span>/</span><a href="/#guias-didacticas">Guías didácticas</a><span>/</span><span>Introducción al clima</span></nav>
+        <p class="eyebrow">Guía didáctica 01</p>
+        <h1 class="page-title">La atmósfera cambia porque la energía y la materia circulan.</h1>
+        <p class="lead">Una introducción a las variables que describen el tiempo y a los procesos que conectan física, química y territorio.</p>
+      </div>
+      <div class="molecule-visual" aria-hidden="true">
+        <span class="core">ATM</span><i class="node n1">N₂</i><i class="node n2">O₂</i><i class="node n3">H₂O</i><i class="node n4">CO₂</i>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="elementos-title">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Cinco variables conectadas</p><h2 id="elementos-title" class="section-title">Elementos climáticos</h2></div>
+        <p>Ninguna variable actúa sola. Un cambio térmico modifica densidad y presión; eso mueve aire y redistribuye vapor y energía.</p>
+      </div>
+      <div class="element-grid">
+        {elements.map((element) => (
+          <article style={`--element-color:${element.color}`}>
+            <div class="element-symbol"><img src={element.icon.src} width={element.icon.width} height={element.icon.height} alt="" /><small>{element.unit}</small></div>
+            <h3>{element.title}</h3>
+            <p>{element.description}</p>
+            <span>{element.relation}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section energy-section" aria-labelledby="energy-title">
+    <div class="shell energy-grid">
+      <div class="energy-copy">
+        <p class="eyebrow">El motor</p>
+        <h2 id="energy-title" class="section-title">El Sol calienta de forma desigual.</h2>
+        <p>La geometría terrestre, la inclinación del eje y las propiedades de cada superficie hacen que la radiación no se distribuya por igual.</p>
+        <div class="equation"><span>Q</span><b>=</b><span>m · c · ΔT</span></div>
+        <p class="equation-note">La energía necesaria para cambiar la temperatura depende de la masa y del calor específico de la materia.</p>
+      </div>
+        <div class="energy-diagram" aria-label="Esquema del balance de energía">
+          <img class="solar-energy-icon" src={solarEnergyIcon.src} width={solarEnergyIcon.width} height={solarEnergyIcon.height} alt="" />
+        <div class="sun">SOL</div>
+        <div class="beam beam-one">Radiación corta ↓</div>
+        <div class="earth">SUPERFICIE</div>
+        <div class="beam beam-two">Radiación larga ↑</div>
+        <div class="atmosphere">ATMÓSFERA</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section relationships" aria-labelledby="relations-title">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Causa y respuesta</p><h2 id="relations-title" class="section-title">Relaciones fundamentales</h2></div>
+      </div>
+      <div class="relation-grid">
+        <article><span>01</span><h3>Temperatura y presión</h3><p>Al calentarse, el aire se expande, disminuye su densidad y tiende a ascender. El aire frío es más denso y desciende.</p><div class="mini-flow"><b>Aire cálido ↑</b><i></i><b>Aire frío ↓</b></div></article>
+        <article><span>02</span><h3>Temperatura y humedad</h3><p>El aire cálido puede contener más vapor. Si se enfría hasta el punto de rocío, el vapor comienza a condensarse.</p><div class="mini-flow"><b>Vapor</b><i></i><b>Gotas</b></div></article>
+        <article><span>03</span><h3>Presión y viento</h3><p>El aire acelera desde zonas de mayor presión hacia zonas de menor presión, desviado por rotación y fricción.</p><div class="mini-flow"><b>Alta</b><i></i><b>Baja</b></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section factors-section" aria-labelledby="factors-title">
+    <div class="shell factors-grid">
+      <div><p class="eyebrow">Por qué cada lugar es distinto</p><h2 id="factors-title" class="section-title">Factores modificadores</h2><p class="lead">Los elementos describen la atmósfera; estos factores ayudan a explicar su distribución espacial.</p></div>
+      <div class="factor-list">
+        <article><strong>01</strong><div><h3>Latitud</h3><p>Controla el ángulo solar y la duración del día.</p></div></article>
+        <article><strong>02</strong><div><h3>Altitud <img class="altitude-icon" src={altitudeIcon.src} width={altitudeIcon.width} height={altitudeIcon.height} alt="" /></h3><p>Reduce presión y, normalmente, temperatura.</p></div></article>
+        <article><strong>03</strong><div><h3>Relieve</h3><p>Fuerza ascensos, lluvias orográficas y sombras secas.</p></div></article>
+        <article><strong>04</strong><div><h3>Continentalidad</h3><p>Modifica amplitud térmica y disponibilidad de humedad.</p></div></article>
+        <article><strong>05</strong><div><h3>Corrientes</h3><p>Redistribuyen calor y alteran condiciones costeras.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="next-guide">
+    <div class="shell next-card">
+      <div><p class="eyebrow">Ponelo en práctica</p><h2>Ahora observá estas relaciones en datos reales.</h2></div>
+      <a class="button button-accent" href="/comparaciones/">Comparar ciudades →</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .theory-hero { overflow: hidden; background: var(--navy); padding-block: 76px 92px; color: var(--white); }
+  .theory-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: center; gap: 70px; }
+  .breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 48px; color: rgba(255,255,255,.62); font-size: .73rem; }
+  .breadcrumbs a { color: var(--white); text-underline-offset: 4px; }
+  .theory-hero .eyebrow, .theory-hero .page-title { color: var(--white); }
+  .theory-hero .eyebrow::before { background: var(--yellow); }
+  .theory-hero .lead { color: rgba(255,255,255,.7); }
+  .molecule-visual { position: relative; width: min(100%, 390px); aspect-ratio: 1; margin: auto; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; }
+  .molecule-visual::before, .molecule-visual::after { position: absolute; inset: 18%; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; content:""; transform: rotate(45deg); }
+  .molecule-visual::after { inset: 34% -3%; transform: rotate(-32deg); }
+  .core, .node { position: absolute; display: grid; place-items: center; border-radius: 50%; font-style: normal; font-weight: 900; }
+  .core { inset: 34%; background: var(--yellow); color: var(--navy); font-size: 1.5rem; }
+  .node { width: 64px; height: 64px; background: var(--blue); color: var(--white); font-size: .8rem; }
+  .n1 { top: 4%; left: 45%; } .n2 { top: 45%; right: -3%; } .n3 { bottom: 2%; left: 40%; background: var(--cyan); } .n4 { top: 42%; left: -4%; background: var(--orange); }
+  .element-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .element-grid article { display:flex; min-height: 330px; flex-direction:column; align-items:flex-start; border:1px solid var(--line); border-top:7px solid var(--element-color); border-radius:18px; padding:22px; }
+  .element-symbol { width: 70px; height: 70px; display:grid; place-content:center; border-radius:14px; background:color-mix(in srgb, var(--element-color) 14%, white); color:var(--element-color); text-align:center; }
+  .element-symbol img, .element-symbol small { display:block; line-height:1.05; }
+  .element-symbol img { width: 42px; height: 42px; object-fit:contain; } .element-symbol small { font-size:.6rem; }
+  .element-grid h3 { margin:24px 0 9px; color:var(--navy); }
+  .element-grid p { margin:0; color:var(--muted); font-size:.82rem; }
+  .element-grid article > span { margin-top:auto; color:var(--element-color); font-size:.68rem; font-weight:850; }
+  .energy-section { background:var(--yellow-soft); }
+  .energy-grid { display:grid; grid-template-columns:.8fr 1.2fr; align-items:center; gap:70px; }
+  .energy-copy > p:not(.eyebrow):not(.equation-note) { color:var(--muted); }
+  .equation { display:flex; align-items:center; gap:13px; margin-top:30px; color:var(--navy); font-size:clamp(1.8rem,5vw,3.5rem); font-weight:900; }
+  .equation b { color:var(--orange); }
+  .equation-note { font-size:.75rem; color:var(--muted); }
+  .energy-diagram { position:relative; min-height:430px; border-radius:26px; background:linear-gradient(#006dff 0 52%, #86c761 53% 67%, #5a713d 68%); overflow:hidden; }
+  .solar-energy-icon { position:absolute; z-index:1; top:24px; right:30px; width:90px; height:90px; object-fit:contain; }
+  .sun { position:absolute; z-index:2; top:50px; right:52px; display:grid; width:62px; height:62px; place-items:center; border-radius:50%; background:var(--yellow); color:var(--navy); font-size:.68rem; font-weight:900; }
+  .earth, .atmosphere { position:absolute; right:0; left:0; text-align:center; color:var(--white); font-size:.7rem; font-weight:850; letter-spacing:.15em; }
+  .earth { bottom:36px; } .atmosphere { top:48%; }
+  .beam { position:absolute; left:16%; border-radius:99px; padding:7px 12px; color:var(--white); font-size:.68rem; font-weight:800; }
+  .beam-one { top:24%; background:var(--orange); transform:rotate(48deg); } .beam-two { bottom:27%; left:53%; background:var(--red); transform:rotate(-58deg); }
+  .relation-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .relation-grid article { border:1px solid var(--line); border-radius:20px; padding:28px; }
+  .relation-grid article > span { color:var(--blue); font-size:.7rem; font-weight:900; }
+  .relation-grid h3 { margin:22px 0 8px; color:var(--navy); font-size:1.3rem; }
+  .relation-grid p { color:var(--muted); font-size:.86rem; }
+  .mini-flow { display:flex; align-items:center; gap:10px; margin-top:28px; }
+  .mini-flow b { flex:1; border-radius:10px; background:var(--blue-soft); padding:9px; color:var(--navy); font-size:.7rem; text-align:center; }
+  .mini-flow i { width:28px; height:2px; background:var(--orange); }
+  .factors-section { background:var(--surface); }
+  .factors-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:80px; }
+  .factor-list { display:grid; gap:8px; }
+  .factor-list article { display:grid; grid-template-columns:45px 1fr; gap:15px; border-bottom:1px solid var(--line); padding:14px 0; }
+  .factor-list strong { color:var(--blue); font-size:.72rem; }
+  .factor-list h3, .factor-list p { margin:0; } .factor-list h3 { color:var(--navy); } .factor-list p { color:var(--muted); font-size:.82rem; }
+  .altitude-icon { width:20px; height:20px; margin-left:7px; vertical-align:middle; }
+  .next-guide { background:var(--blue-soft); padding-block:70px; }
+  .next-card { display:flex; align-items:center; justify-content:space-between; gap:40px; border-radius:26px; background:var(--navy); padding:42px; color:var(--white); }
+  .next-card .eyebrow { color:var(--cyan); } .next-card h2 { margin:0; max-width:650px; font-size:clamp(1.7rem,4vw,2.8rem); line-height:1.05; }
+  @media(max-width:950px){ .element-grid{grid-template-columns:repeat(2,1fr)} .energy-grid,.factors-grid{grid-template-columns:1fr} }
+  @media(max-width:750px){ .theory-grid{grid-template-columns:1fr}.molecule-visual{width:270px}.relation-grid{grid-template-columns:1fr}.next-card{align-items:flex-start;flex-direction:column} }
+  @media(max-width:520px){ .element-grid{grid-template-columns:1fr}.element-grid article{min-height:0}.element-grid article>span{margin-top:20px} }
+</style>

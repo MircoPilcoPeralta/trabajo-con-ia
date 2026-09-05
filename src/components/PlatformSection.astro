@@ -1,0 +1,349 @@
+---
+import type { ClimatePlatform } from "../data/platforms";
+
+interface Props {
+  platform: ClimatePlatform;
+  index: number;
+}
+
+const { platform, index } = Astro.props;
+const number = String(index + 1).padStart(2, "0");
+---
+
+<article
+  id={platform.slug}
+  class:list={["platform", index % 2 === 1 && "platform-reverse"]}
+  style={`--platform-color:${platform.color};--platform-accent:${platform.accent}`}
+>
+  <div class="platform-hero shell">
+    <div class="platform-copy">
+      <span class="platform-number">{number}</span>
+      <div class="tag-row">
+        <span class="tag">{platform.scope}</span>
+        <span class="tag">{platform.access}</span>
+        <span class="tag">{platform.language}</span>
+      </div>
+      <p class="platform-wordmark">{platform.shortName}</p>
+      <h2>{platform.tagline}</h2>
+      <p class="platform-summary">{platform.summary}</p>
+      <div class="platform-actions">
+        <a class="button platform-button" href={platform.url} target="_blank" rel="noreferrer">
+          {platform.linkLabel} <span aria-hidden="true">↗</span>
+        </a>
+        {platform.guideUrl && <a class="platform-guide" href={platform.guideUrl}>Ver videoguía →</a>}
+      </div>
+      {platform.note && <p class="platform-note">{platform.note}</p>}
+    </div>
+
+    <figure class:list={["platform-visual", `visual-${platform.slug}`]}>
+      <img src={platform.visual.src} width={platform.visual.width} height={platform.visual.height} alt={platform.visualAlt} loading="lazy" />
+    </figure>
+  </div>
+
+  <div class="platform-details shell">
+    <section aria-labelledby={`${platform.slug}-features`}>
+      <p class="detail-kicker">Qué ofrece</p>
+      <h3 id={`${platform.slug}-features`}>Información que podés explorar</h3>
+      <div class="feature-grid">
+        {platform.features.map((feature, featureIndex) => (
+          <article>
+            <span>{String(featureIndex + 1).padStart(2, "0")}</span>
+            <h4>{feature.title}</h4>
+            <p>{feature.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="dataset-section" aria-labelledby={`${platform.slug}-datasets`}>
+      <div>
+        <p class="detail-kicker">Variables y productos</p>
+        <h3 id={`${platform.slug}-datasets`}>Datos destacados</h3>
+      </div>
+      <div class="dataset-list">
+        {platform.datasets.map((dataset) => <span>{dataset}</span>)}
+      </div>
+    </section>
+
+    <div class="learning-grid">
+      <section class="steps-card" aria-labelledby={`${platform.slug}-steps`}>
+        <p class="detail-kicker">Recorrido sugerido</p>
+        <h3 id={`${platform.slug}-steps`}>Cómo comenzar</h3>
+        <ol>
+          {platform.steps.map((step) => <li>{step}</li>)}
+        </ol>
+      </section>
+      <section class="activity-card" aria-labelledby={`${platform.slug}-activity`}>
+        <p class="detail-kicker">Actividad de aula</p>
+        <h3 id={`${platform.slug}-activity`}>Aplicalo a una pregunta</h3>
+        <p>{platform.classroom}</p>
+      </section>
+    </div>
+  </div>
+</article>
+
+<style>
+  .platform {
+    padding-block: 96px;
+    border-bottom: 1px solid var(--line);
+    background: var(--white);
+  }
+
+  .platform:nth-child(even) {
+    background: var(--surface);
+  }
+
+  .platform-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(440px, 1.1fr);
+    align-items: center;
+    gap: clamp(42px, 8vw, 100px);
+  }
+
+  .platform-reverse .platform-copy { order: 2; }
+  .platform-reverse .platform-visual { order: 1; }
+
+  .platform-number {
+    display: inline-block;
+    margin-bottom: 18px;
+    color: var(--platform-color);
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+  }
+
+  .platform-wordmark {
+    margin: 34px 0 8px;
+    color: var(--platform-color);
+    font-size: clamp(2.5rem, 5vw, 4.7rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 0.9;
+  }
+
+  .platform-copy h2 {
+    max-width: 580px;
+    margin: 18px 0;
+    color: var(--navy);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+
+  .platform-summary {
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 1.02rem;
+  }
+
+  .platform-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .platform-button {
+    background: var(--platform-color);
+  }
+
+  .platform-guide {
+    color: var(--platform-color);
+    font-weight: 850;
+    text-underline-offset: 5px;
+  }
+
+  .platform-note {
+    margin-top: 20px;
+    border-left: 4px solid var(--platform-accent);
+    padding-left: 14px;
+    color: var(--muted);
+    font-size: 0.79rem;
+  }
+
+  .platform-visual {
+    position: relative;
+    display: grid;
+    min-height: 360px;
+    margin: 0;
+    place-items: center;
+    overflow: hidden;
+    border: 8px solid var(--navy-deep);
+    border-radius: 22px;
+    background: var(--navy-deep);
+    box-shadow: var(--shadow);
+  }
+
+  .platform-visual::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: linear-gradient(145deg, var(--platform-color), var(--navy-deep));
+    content: "";
+    opacity: 0.38;
+  }
+
+  .platform-visual img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    max-width: 100%;
+    max-height: 390px;
+    object-fit: contain;
+  }
+
+  .visual-senamhi img { width: 100%; max-height: none; }
+  .visual-ventusky img { height: 390px; max-width: 83%; }
+  .visual-nasa-earthdata img { height: 330px; }
+  .visual-copernicus img { width: 100%; max-height: none; }
+  .visual-earth-nullschool img { width: 100%; max-height: none; }
+
+  .platform-details {
+    display: grid;
+    gap: 50px;
+    margin-top: 74px;
+  }
+
+  .detail-kicker {
+    margin: 0 0 8px;
+    color: var(--platform-color);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .platform-details h3 {
+    margin: 0 0 24px;
+    color: var(--navy);
+    font-size: clamp(1.5rem, 3vw, 2.15rem);
+    line-height: 1.15;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 13px;
+  }
+
+  .feature-grid article {
+    min-height: 220px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--white);
+    padding: 21px;
+  }
+
+  .platform:nth-child(even) .feature-grid article { background: var(--white); }
+
+  .feature-grid article > span {
+    color: var(--platform-color);
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+
+  .feature-grid h4 {
+    margin: 27px 0 8px;
+    color: var(--navy);
+    font-size: 1.1rem;
+  }
+
+  .feature-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
+  .dataset-section {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    align-items: center;
+    gap: 40px;
+    border-radius: 22px;
+    background: var(--platform-color);
+    padding: clamp(25px, 5vw, 46px);
+  }
+
+  .dataset-section .detail-kicker { color: var(--platform-accent); }
+  .dataset-section h3 { margin: 0; color: var(--white); }
+
+  .dataset-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+  }
+
+  .dataset-list span {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 750;
+    text-align: center;
+  }
+
+  .learning-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .steps-card,
+  .activity-card {
+    border-radius: 22px;
+    padding: clamp(24px, 4vw, 38px);
+  }
+
+  .steps-card { border: 1px solid var(--line); background: var(--white); }
+  .activity-card { background: var(--platform-accent); }
+  .activity-card p:last-child { margin-bottom: 0; color: var(--navy); font-size: 1.03rem; }
+
+  .steps-card ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: steps;
+  }
+
+  .steps-card li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--line);
+    padding-block: 11px;
+    counter-increment: steps;
+  }
+
+  .steps-card li::before {
+    display: grid;
+    flex: 0 0 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--platform-color);
+    color: var(--white);
+    content: counter(steps);
+    font-size: 0.7rem;
+    font-weight: 850;
+  }
+
+  @media (max-width: 900px) {
+    .platform-hero { grid-template-columns: 1fr; }
+    .platform-reverse .platform-copy, .platform-reverse .platform-visual { order: initial; }
+    .feature-grid { grid-template-columns: 1fr 1fr; }
+    .dataset-section { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .platform { padding-block: 66px; }
+    .platform-hero { gap: 52px; }
+    .platform-visual { min-height: 270px; }
+    .visual-ventusky img { height: 300px; }
+    .feature-grid, .learning-grid { grid-template-columns: 1fr; }
+    .feature-grid article { min-height: 0; }
+    .dataset-list { grid-template-columns: 1fr 1fr; }
+  }
+</style>

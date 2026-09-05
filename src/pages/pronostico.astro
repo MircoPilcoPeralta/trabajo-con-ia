@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PlatformSection from "../components/PlatformSection.astro";
+import { platforms } from "../data/platforms";
+import senamhiHero from "../../assets/senamhi-overview.png";
+---
+
+<BaseLayout
+  title="Plataformas climáticas | Física de la Atmósfera"
+  description="Guía detallada para consultar SENAMHI Bolivia, Ventusky, NASA Earthdata, Copernicus y Earth NullSchool."
+>
+  <section class="directory-hero">
+    <div class="shell directory-grid">
+      <div>
+        <p class="eyebrow">Cinco formas de mirar la atmósfera</p>
+        <h1 class="page-title">Elegí la herramienta según tu pregunta.</h1>
+        <p class="lead">No todas las plataformas muestran lo mismo. Conocé qué datos ofrece cada una, cómo comenzar y cuándo conviene utilizarla.</p>
+      </div>
+      <img class="directory-hero-visual" src={senamhiHero.src} width={senamhiHero.width} height={senamhiHero.height} alt="Vista del portal de SENAMHI Bolivia" />
+      <nav class="platform-index" aria-label="Índice de plataformas">
+        {platforms.map((platform, index) => (
+          <a href={`#${platform.slug}`}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            {platform.name}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <div class="platform-list">
+    {platforms.map((platform, index) => (
+      <>
+        <PlatformSection platform={platform} index={index} />
+        {index === 1 && (
+          <section class="directory-cta">
+            <div class="shell cta-card">
+              <div>
+                <p class="eyebrow">Del mapa a la explicación</p>
+                <h2>¿Querés ver el recorrido paso a paso?</h2>
+                <p>Las videoguías muestran cómo empezar con SENAMHI y Ventusky sin perderse entre capas y controles.</p>
+              </div>
+              <a class="button button-accent" href="/guias/">Ir a las videoguías <span class="arrow">→</span></a>
+            </div>
+          </section>
+        )}
+      </>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .directory-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    padding-block: 92px;
+    color: var(--white);
+  }
+
+  .directory-hero::after {
+    position: absolute;
+    right: -180px;
+    bottom: -310px;
+    width: 650px;
+    height: 650px;
+    border: 100px solid rgba(6, 198, 175, 0.12);
+    border-radius: 50%;
+    content: "";
+  }
+
+  .directory-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr minmax(220px, 0.65fr) 0.48fr;
+    align-items: end;
+    gap: 70px;
+  }
+
+  .directory-hero .eyebrow,
+  .directory-hero .page-title { color: var(--white); }
+  .directory-hero .eyebrow::before { background: var(--yellow); }
+  .directory-hero .lead { color: rgba(255, 255, 255, 0.72); }
+
+  .directory-hero-visual {
+    width: 100%;
+    max-height: 170px;
+    border-radius: 16px;
+    object-fit: cover;
+    opacity: 0.9;
+  }
+
+  .platform-index {
+    display: grid;
+    gap: 5px;
+  }
+
+  .platform-index a {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 10px 3px;
+    color: var(--white);
+    font-size: 0.88rem;
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  .platform-index a:hover { color: var(--yellow); }
+  .platform-index span { color: var(--cyan); font-size: 0.7rem; }
+
+  .directory-cta {
+    padding-block: 82px;
+    background: var(--blue-soft);
+  }
+
+  .cta-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    border-radius: 28px;
+    background: var(--navy);
+    padding: clamp(30px, 6vw, 58px);
+    color: var(--white);
+  }
+
+  .cta-card .eyebrow { color: var(--cyan); }
+  .cta-card h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.05; }
+  .cta-card p:last-child { max-width: 670px; margin-bottom: 0; color: rgba(255, 255, 255, 0.68); }
+  .cta-card .button { flex: 0 0 auto; }
+
+  @media (max-width: 800px) {
+    .directory-grid { grid-template-columns: 1fr; gap: 30px; }
+    .directory-hero-visual { max-width: 430px; max-height: 210px; }
+    .cta-card { align-items: flex-start; flex-direction: column; }
+  }
+</style>
