@@ -8,17 +8,6 @@ import { tutorialVideos } from "../../data/videos";
   title="Videoguías | Física de la Atmósfera"
   description="Tutoriales audiovisuales para aprender a utilizar SENAMHI Bolivia y Ventusky."
 >
-  <section class="guides-hero">
-    <div class="shell guides-hero-grid">
-      <div>
-        <p class="eyebrow">Ver · pausar · practicar</p>
-        <h1 class="page-title">Dos recorridos para empezar sin adivinar.</h1>
-        <p class="lead">Aprendé dónde encontrar un pronóstico oficial y cómo leer un mapa meteorológico animado.</p>
-      </div>
-      <div class="guides-count" aria-hidden="true"><strong>02</strong><span>videoguías</span></div>
-    </div>
-  </section>
-
   <section class="section tutorials" aria-labelledby="tutoriales-title">
     <div class="shell">
       <h2 id="tutoriales-title" class="sr-only">Tutoriales disponibles</h2>
@@ -52,36 +41,6 @@ import { tutorialVideos } from "../../data/videos";
 </BaseLayout>
 
 <style>
-  .guides-hero {
-    overflow: hidden;
-    background: var(--yellow);
-    padding-block: 92px;
-  }
-
-  .guides-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 50px;
-  }
-
-  .guides-hero .eyebrow { color: var(--navy); }
-  .guides-hero .lead { color: rgba(0, 35, 96, 0.7); }
-
-  .guides-count {
-    display: grid;
-    width: 190px;
-    height: 190px;
-    place-content: center;
-    border: 2px solid var(--navy);
-    border-radius: 50%;
-    color: var(--navy);
-    text-align: center;
-  }
-
-  .guides-count strong { font-size: 4.2rem; line-height: 0.9; }
-  .guides-count span { font-size: 0.75rem; font-weight: 850; text-transform: uppercase; }
-
   .tutorials { padding-block: 30px 90px; }
 
   .tutorial {
@@ -164,7 +123,6 @@ import { tutorialVideos } from "../../data/videos";
   }
 
   @media (max-width: 600px) {
-    .guides-hero-grid { grid-template-columns: 1fr; }
     .guides-count { width: 125px; height: 125px; }
     .guides-count strong { font-size: 3rem; }
     .tutorial { padding-block: 54px; }

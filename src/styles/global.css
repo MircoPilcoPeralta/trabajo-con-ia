@@ -20,10 +20,10 @@
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 30px;
-  --shell: 1180px;
+  --shell: 1120px;
   font-family: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
   color: var(--ink);
-  background: var(--white);
+  background: #f7fbff;
   font-synthesis: none;
 }
 
@@ -122,7 +122,7 @@ select {
 }
 
 .header-inner {
-  min-height: 82px;
+  min-height: 96px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -132,14 +132,14 @@ select {
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 14px;
   color: var(--navy);
   text-decoration: none;
   line-height: 1.05;
 }
 
 .brand-mark {
-  width: 42px;
+  width: 56px;
   color: var(--blue);
 }
 
@@ -153,28 +153,32 @@ select {
 }
 
 .brand strong {
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-size: clamp(1rem, 2.4vw, 1.7rem);
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .brand small {
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 0.73rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  margin-top: 7px;
+  color: var(--navy);
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 2px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 22px rgba(0, 35, 96, 0.06);
 }
 
 .main-nav a {
-  border-radius: 999px;
-  padding: 10px 16px;
+  border-radius: 12px;
+  border-bottom: 3px solid transparent;
+  padding: 14px 16px 11px;
   color: var(--navy);
   font-size: 0.92rem;
   font-weight: 700;
@@ -184,12 +188,12 @@ select {
 
 .main-nav a:hover {
   background: var(--blue-soft);
-  transform: translateY(-1px);
 }
 
 .main-nav a[aria-current="page"] {
-  background: var(--navy);
-  color: var(--white);
+  border-bottom-color: var(--blue);
+  background: #f5faff;
+  color: var(--blue);
 }
 
 .menu-toggle {
@@ -411,8 +415,8 @@ select {
     display: grid;
   }
 
-  .main-nav a {
-    padding: 13px 16px;
+    .main-nav a {
+      padding: 13px 16px;
   }
 
   .section-heading {

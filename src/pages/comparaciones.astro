@@ -7,14 +7,6 @@ import { CITIES } from "../lib/openMeteo";
   title="Comparar ciudades | Física de la Atmósfera"
   description="Compará en tiempo real temperatura, humedad, viento y presión entre ciudades bolivianas."
 >
-  <section class="compare-hero">
-    <div class="shell">
-      <p class="eyebrow">Mismo momento · distinto territorio</p>
-      <h1 class="page-title">Compará la atmósfera entre dos ciudades.</h1>
-      <p class="lead">Observá cómo altitud, relieve y circulación producen condiciones diferentes dentro de Bolivia.</p>
-    </div>
-  </section>
-
   <section class="section compare-section" aria-labelledby="compare-title">
     <div class="shell">
       <h2 id="compare-title" class="sr-only">Seleccionar ciudades para comparar</h2>
@@ -123,8 +115,6 @@ import { CITIES } from "../lib/openMeteo";
 </BaseLayout>
 
 <style>
-  .compare-hero { background:var(--green); padding-block:90px; color:var(--white); }
-  .compare-hero .eyebrow,.compare-hero .page-title{color:var(--white)} .compare-hero .eyebrow::before{background:var(--yellow)} .compare-hero .lead{color:rgba(255,255,255,.75)}
   .compare-controls { display:grid; grid-template-columns:1fr auto 1fr auto; align-items:end; gap:14px; border:1px solid var(--line); border-radius:22px; background:var(--surface); padding:22px; }
   .compare-controls label span { display:block; margin-bottom:5px; color:var(--muted); font-size:.7rem; font-weight:850; text-transform:uppercase; }
   .compare-controls select { width:100%; min-height:48px; border:1px solid var(--line); border-radius:12px; background:var(--white); padding:9px 36px 9px 12px; color:var(--navy); font-weight:800; }

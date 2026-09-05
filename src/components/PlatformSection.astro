@@ -36,7 +36,7 @@ const number = String(index + 1).padStart(2, "0");
     </div>
 
     <figure class:list={["platform-visual", `visual-${platform.slug}`]}>
-      <img src={platform.visual.src} width={platform.visual.width} height={platform.visual.height} alt={platform.visualAlt} loading="lazy" />
+      <img src={platform.visual.src} style="max-height: 500px;" width={platform.visual.width} height={platform.visual.height} alt={platform.visualAlt} loading="lazy" />
     </figure>
   </div>
 
@@ -76,7 +76,7 @@ const number = String(index + 1).padStart(2, "0");
       <section class="activity-card" aria-labelledby={`${platform.slug}-activity`}>
         <p class="detail-kicker">Actividad de aula</p>
         <h3 id={`${platform.slug}-activity`}>Aplicalo a una pregunta</h3>
-        <p>{platform.classroom}</p>
+        <div set:html={platform.classroom}></div>
       </section>
     </div>
   </div>

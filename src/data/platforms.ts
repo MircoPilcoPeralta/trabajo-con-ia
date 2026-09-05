@@ -51,8 +51,17 @@ export const platforms: ClimatePlatform[] = [
       { title: "Hidrología", text: "Seguimiento de cuencas, balances hídricos y repositorios especializados." },
     ],
     datasets: ["Temperatura", "Precipitación", "Viento", "Humedad", "Niveles de ríos", "Alertas"],
-    steps: ["Elegí un departamento", "Seleccioná una estación", "Cambiá entre hoy, diario y extendido", "Contrastá con una alerta vigente"],
-    classroom: "Registrá el pronóstico de tu ciudad durante cinco días y comparalo con lo observado. Identificá qué variable presentó la mayor diferencia.",
+    steps: ["Elige un departamento", "Seleccioná una estación", "Cambiá entre hoy, diario y extendido", "Contrastá con una alerta vigente"],
+    classroom: `
+        <p class="detail-kicker">⚠️ <strong> Actividad de aula</strong> </p>
+        <h3>Cómo podemos utilizar SENAMHI en clase?</h3>
+        <p>Es una herrameinta ideal para trabajar con datos reales y fortalecer el aprendizaje científico</p>
+        <h3 >Ejemplo de actividad</h3>
+        <h4 >🌳 Reto climático</h4>
+        <p>⭐Compara la temperatura y precipitación de Oruro, Cochabamba y Santa Cruz utilizando datos del SENAMHI.</p>
+        <p>❓¿Qué diferencias encuentras?</p>
+        <p>❓ ¿Cómo influyen la altitud y el relieve?</p>
+        `,    
     guideUrl: "/guias/#senamhi",
   },
   {
@@ -60,7 +69,7 @@ export const platforms: ClimatePlatform[] = [
     name: "Ventusky",
     shortName: "VENTUSKY",
     tagline: "El tiempo como un mapa vivo",
-    summary: "Un visor global que transforma modelos numéricos en capas animadas. Es especialmente útil para reconocer patrones de viento, presión, temperatura y precipitación.",
+    summary: "Ventusky es una plataforma web y móvil que permite visualizar y explorar fenómenos meteorológicos mediante mapas interactivos y animados. Combina datos de los principales modelos meteorológicos del mundo para ofrecer pronósticos precisos y actualizados en tiempo real.",
     url: "https://www.ventusky.com/",
     linkLabel: "Abrir Ventusky",
     scope: "Global",
@@ -73,12 +82,20 @@ export const platforms: ClimatePlatform[] = [
     features: [
       { title: "Capas", text: "Temperatura, sensación térmica, radar, satélite, viento, nubes, presión y aire." },
       { title: "Animación", text: "Una línea temporal permite observar el desplazamiento y evolución de sistemas." },
-      { title: "Modelos", text: "Integra fuentes como ECMWF, GFS, ICON y GEM para explorar diferencias." },
       { title: "Detalle local", text: "Al seleccionar un punto aparecen valores y pronósticos para esa coordenada." },
     ],
     datasets: ["Viento", "Ráfagas", "Temperatura", "Presión", "Radar", "CAPE"],
     steps: ["Buscá una ciudad", "Seleccioná una capa", "Mové la línea temporal", "Compará dos modelos disponibles"],
-    classroom: "Observá La Paz y Santa Cruz a la misma hora. Explicá cómo altitud y circulación atmosférica ayudan a interpretar sus diferencias.",
+    classroom: `
+        <p class="detail-kicker">⚠️ <strong> ¿Cómo utilizar Ventusky en clase?</strong> </p>
+        <p class="detail-kicker">Ventusky es una herramienta poderosa para enseñar y comprender conceptos de Física de la Atmósfera y Geografía.</p>
+        <p class="detail-kicker"><strong>Ejemplo de actividad para el aula</strong> </p>
+        <p>⭐En Ventusky, observa la animación de vientos y localiza un sistema de baja presión (L).</p>
+        <p>⭐Cambia la capa a Presión atmosférica e identifica las isobaras.</p>
+        <p>⭐Relaciona el gradiente de presión (espaciamiento de isobaras) con la intensidad del viento que observas en la animación.</p>
+        <p>💡Objetivo: Comprender cómo las diferencias de presión atmosférica generan movimiento en el aire..</p>
+
+        `,   
     guideUrl: "/guias/#ventusky",
   },
   {
@@ -104,7 +121,21 @@ export const platforms: ClimatePlatform[] = [
     ],
     datasets: ["Atmósfera", "Océanos", "Superficie", "Criosfera", "Incendios", "Radiación"],
     steps: ["Definí una pregunta", "Elegí tema y variable", "Delimitá Bolivia en el mapa", "Filtrá fecha, sensor y resolución"],
-    classroom: "Usá Worldview para identificar humo o nubosidad sobre Bolivia y relacioná la imagen con datos meteorológicos del mismo día.",
+    classroom: `
+        <p class="detail-kicker">⚠️ <strong> Uso en el aula</strong> </p>
+        <p class="detail-kicker">Los estudiantes pueden explorar datos reales de la Tierra y analizar fenómenos ambientales.</p>
+        <p class="detail-kicker"><strong>Ejemplo de actividad para el aula</strong> </p>
+        <p>⭐ Seleccionan una región.</p>
+        <p>⭐ Eligen un período de tiempo..</p>
+        <p>⭐ Buscan un conjunto de datos.</p>
+        <p>⭐ Observan la información disponible..</p>
+        <p>⭐ Comparan los resultados.</p>
+        <p>⭐ Elaboran conclusiones.</p>
+        <p> <strong> Uso en el aula</strong> </p>
+         <p>Los estudiantes seleccionan una región de Bolivia y buscan datos relacionados con temperatura, vegetación, incendios o condiciones atmosféricas.</p>
+        <p> <strong> Reto para los estudiantes</strong> </p>
+         <p>¿Qué cambios podemos observar en una región de Bolivia utilizando datos obtenidos mediante observación de la Tierra?.</p>
+        `,  
   },
   {
     slug: "copernicus",
@@ -128,9 +159,17 @@ export const platforms: ClimatePlatform[] = [
       { title: "Datos reproducibles", text: "Metadatos, documentación y APIs orientadas al análisis científico." },
     ],
     datasets: ["ERA5", "CAMS", "Temperatura", "Aerosoles", "Gases traza", "Proyecciones"],
-    steps: ["Elegí Climate o Atmosphere", "Buscá una colección", "Revisá unidades y resolución", "Definí área y período"],
-    classroom: "Compará una anomalía mensual de temperatura con el promedio climatológico. Explicá por qué una anomalía no es lo mismo que la temperatura diaria.",
-    note: "El antiguo portal general copernicus.eu está archivado. Este acceso dirige al servicio climático vigente.",
+    steps: ["Elige Climate o Atmosphere", "Buscá una colección", "Revisá unidades y resolución", "Definí área y período"],
+    classroom: `
+        <p class="detail-kicker">⚠️ <strong> Uso en el aula</strong> </p>
+        <p class="detail-kicker">Es una herramienta ideal para trabajar con datos satelitales reales y fortalecer el aprendizaje científico</p>
+        <p class="detail-kicker"><strong>Ejemplo de actividad</strong> </p>
+        <p class="detail-kicker">Analiza la concentración de CO₂ y la temperatura global de los últimos 10 años utilizando datos de Copernicus. </p>
+        <p>¿Qué tendencias observas?</p>
+        <p>¿Cómo se relacionan ambas variables?</p>
+        `,      
+        
+        note: "El antiguo portal general copernicus.eu está archivado. Este acceso dirige al servicio climático vigente.",
   },
   {
     slug: "earth-nullschool",
@@ -154,7 +193,14 @@ export const platforms: ClimatePlatform[] = [
       { title: "Altura y tiempo", text: "Cambia niveles de presión y navega por fechas para observar evolución." },
     ],
     datasets: ["Viento", "CO", "CO₂", "SO₂", "NO₂", "PM2.5"],
-    steps: ["Abrí el menú Earth", "Elegí Aire, Química o Partículas", "Seleccioná una superposición", "Cambiá altura, fecha y proyección"],
-    classroom: "Seguí una corriente en 850 hPa y luego cambiala a superficie. Describí qué permanece y qué cambia en el patrón observado.",
+    steps: ["Abre el menú Earth", "Elige Aire, Química o Partículas", "Selecciona una superposición", "Cambiá altura, fecha y proyección"],
+    classroom: `
+        <p class="detail-kicker">⚠️ <strong> Uso en el aula</strong> </p>
+        <p class="detail-kicker">Es una herramienta ideal para trabajar con datos satelitales reales y fortalecer el aprendizaje científico</p>
+        <p class="detail-kicker"><strong>Ejemplo de actividad</strong> </p>
+        <p class="detail-kicker">Compara las corrientes de aire de diferentes regiones del mundo utilizando datos de Earth Null School. </p>
+        <p>¿Qué tendencias observas?</p>
+        <p>¿Cómo afectan la altitud y relieve a los datos?</p>
+        `,      
   },
 ];
