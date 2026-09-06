@@ -51,7 +51,7 @@ export const platforms: ClimatePlatform[] = [
       { title: "Hidrología", text: "Seguimiento de cuencas, balances hídricos y repositorios especializados." },
     ],
     datasets: ["Temperatura", "Precipitación", "Viento", "Humedad", "Niveles de ríos", "Alertas"],
-    steps: ["Elige un departamento", "Seleccioná una estación", "Cambiá entre hoy, diario y extendido", "Contrastá con una alerta vigente"],
+    steps: ["Elige un departamento", "Selecciona una estación", "Cambia entre hoy, diario y extendido", "Contrasta con una alerta vigente"],
     classroom: `
         <p class="detail-kicker">⚠️ <strong> Actividad de aula</strong> </p>
         <h3>Cómo podemos utilizar SENAMHI en clase?</h3>
@@ -85,7 +85,7 @@ export const platforms: ClimatePlatform[] = [
       { title: "Detalle local", text: "Al seleccionar un punto aparecen valores y pronósticos para esa coordenada." },
     ],
     datasets: ["Viento", "Ráfagas", "Temperatura", "Presión", "Radar", "CAPE"],
-    steps: ["Buscá una ciudad", "Seleccioná una capa", "Mové la línea temporal", "Compará dos modelos disponibles"],
+    steps: ["Busca una ciudad", "Selecciona una capa", "Mueve la línea temporal", "Compara dos modelos disponibles"],
     classroom: `
         <p class="detail-kicker">⚠️ <strong> ¿Cómo utilizar Ventusky en clase?</strong> </p>
         <p class="detail-kicker">Ventusky es una herramienta poderosa para enseñar y comprender conceptos de Física de la Atmósfera y Geografía.</p>
@@ -120,7 +120,7 @@ export const platforms: ClimatePlatform[] = [
       { title: "Aprendizaje", text: "Tutoriales, capacitaciones ARSET y recetas para trabajar con datos reales." },
     ],
     datasets: ["Atmósfera", "Océanos", "Superficie", "Criosfera", "Incendios", "Radiación"],
-    steps: ["Definí una pregunta", "Elegí tema y variable", "Delimitá Bolivia en el mapa", "Filtrá fecha, sensor y resolución"],
+    steps: ["Define una pregunta", "Elige tema y variable", "Delimita Bolivia en el mapa", "Filtra fecha, sensor y resolución"],
     classroom: `
         <p class="detail-kicker">⚠️ <strong> Uso en el aula</strong> </p>
         <p class="detail-kicker">Los estudiantes pueden explorar datos reales de la Tierra y analizar fenómenos ambientales.</p>
@@ -159,7 +159,7 @@ export const platforms: ClimatePlatform[] = [
       { title: "Datos reproducibles", text: "Metadatos, documentación y APIs orientadas al análisis científico." },
     ],
     datasets: ["ERA5", "CAMS", "Temperatura", "Aerosoles", "Gases traza", "Proyecciones"],
-    steps: ["Elige Climate o Atmosphere", "Buscá una colección", "Revisá unidades y resolución", "Definí área y período"],
+    steps: ["Elige Climate o Atmosphere", "Busca una colección", "Revisa unidades y resolución", "Define área y período"],
     classroom: `
         <p class="detail-kicker">⚠️ <strong> Uso en el aula</strong> </p>
         <p class="detail-kicker">Es una herramienta ideal para trabajar con datos satelitales reales y fortalecer el aprendizaje científico</p>
@@ -193,7 +193,7 @@ export const platforms: ClimatePlatform[] = [
       { title: "Altura y tiempo", text: "Cambia niveles de presión y navega por fechas para observar evolución." },
     ],
     datasets: ["Viento", "CO", "CO₂", "SO₂", "NO₂", "PM2.5"],
-    steps: ["Abre el menú Earth", "Elige Aire, Química o Partículas", "Selecciona una superposición", "Cambiá altura, fecha y proyección"],
+    steps: ["Abre el menú Earth", "Elige Aire, Química o Partículas", "Selecciona una superposición", "Cambia altura, fecha y proyección"],
     classroom: `
         <p class="detail-kicker">⚠️ <strong> Uso en el aula</strong> </p>
         <p class="detail-kicker">Es una herramienta ideal para trabajar con datos satelitales reales y fortalecer el aprendizaje científico</p>

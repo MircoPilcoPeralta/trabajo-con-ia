@@ -43,7 +43,7 @@ const number = String(index + 1).padStart(2, "0");
   <div class="platform-details shell">
     <section aria-labelledby={`${platform.slug}-features`}>
       <p class="detail-kicker">Qué ofrece</p>
-      <h3 id={`${platform.slug}-features`}>Información que podés explorar</h3>
+      <h3 id={`${platform.slug}-features`}>Información que puedes explorar</h3>
       <div class="feature-grid">
         {platform.features.map((feature, featureIndex) => (
           <article>
@@ -75,7 +75,7 @@ const number = String(index + 1).padStart(2, "0");
       </section>
       <section class="activity-card" aria-labelledby={`${platform.slug}-activity`}>
         <p class="detail-kicker">Actividad de aula</p>
-        <h3 id={`${platform.slug}-activity`}>Aplicalo a una pregunta</h3>
+        <h3 id={`${platform.slug}-activity`}>Aplícalo a una pregunta</h3>
         <div set:html={platform.classroom}></div>
       </section>
     </div>

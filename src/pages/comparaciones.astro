@@ -5,7 +5,7 @@ import { CITIES } from "../lib/openMeteo";
 
 <BaseLayout
   title="Comparar ciudades | Física de la Atmósfera"
-  description="Compará en tiempo real temperatura, humedad, viento y presión entre ciudades bolivianas."
+  description="Compara en tiempo real temperatura, humedad, viento y presión entre ciudades bolivianas."
 >
   <section class="section compare-section" aria-labelledby="compare-title">
     <div class="shell">
@@ -43,9 +43,9 @@ import { CITIES } from "../lib/openMeteo";
       </section>
 
       <div class="interpret-grid">
-        <article><span>ALT</span><h3>Revisá la altitud</h3><p>La presión superficial disminuye con la altura. Por eso no debe confundirse con la presión reducida al nivel del mar.</p></article>
-        <article><span>REL</span><h3>Buscá relaciones</h3><p>Temperatura y humedad relativa cambian juntas, pero no describen por sí solas cuánto vapor contiene el aire.</p></article>
-        <article><span>ESC</span><h3>Considerá la escala</h3><p>La calidad del aire proviene de un modelo global de aproximadamente 45 km, no de sensores urbanos.</p></article>
+        <article><span>ALT</span><h3>Revisa la altitud</h3><p>La presión superficial disminuye con la altura. Por eso no debe confundirse con la presión reducida al nivel del mar.</p></article>
+        <article><span>REL</span><h3>Busca relaciones</h3><p>Temperatura y humedad relativa cambian juntas, pero no describen por sí solas cuánto vapor contiene el aire.</p></article>
+        <article><span>ESC</span><h3>Considera la escala</h3><p>La calidad del aire proviene de un modelo global de aproximadamente 45 km, no de sensores urbanos.</p></article>
       </div>
 
       <div class="study-viewer-callout">
@@ -85,7 +85,7 @@ import { CITIES } from "../lib/openMeteo";
       const cityB = CITIES.find(city => city.id === selectB?.value) ?? CITIES[2];
       if (!cityA || !cityB) return;
       if (cityA.id === cityB.id) {
-        if (status) status.textContent = "Elegí dos ciudades diferentes para comparar.";
+        if (status) status.textContent = "Elige dos ciudades diferentes para comparar.";
         return;
       }
 
@@ -117,7 +117,7 @@ import { CITIES } from "../lib/openMeteo";
         if (bars) bars.innerHTML = rows.map(row => `<div class="bar-row"><strong>${row.label}</strong><div><span class="bar-a" style="width:${Math.max(3, row.a / row.max * 100)}%">${format(row.a, 1)} ${row.unit}</span></div><div><span class="bar-b" style="width:${Math.max(3, row.b / row.max * 100)}%">${format(row.b, 1)} ${row.unit}</span></div></div>`).join("");
         if (status) status.textContent = `Datos del ${a.time.replace("T", " a las ")}.`;
       } catch {
-        if (status) status.textContent = "No fue posible actualizar la comparación. Intentá nuevamente.";
+          if (status) status.textContent = "No fue posible actualizar la comparación. Inténtalo nuevamente.";
       } finally {
         button?.removeAttribute("disabled");
       }
