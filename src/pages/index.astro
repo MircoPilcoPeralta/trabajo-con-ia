@@ -80,7 +80,11 @@ import pressureIcon from "../../assets/presion.svg";
           <div class="forecast-heading"><h2 id="forecast-title">Pronóstico por días</h2><span>Máxima / mínima</span></div>
           <div id="forecast-list" class="forecast-list" aria-label="Pronóstico de cinco días">
             {Array.from({ length: 5 }).map(() => (
-              <article class="forecast-card is-loading"><span></span><strong>--°</strong><small>--°</small></article>
+              <article 
+              style=" border: 1px solid black;
+  border-radius: 10px;
+  padding: 7px;"
+              class="forecast-card is-loading"><span></span><strong>--°</strong><small>--°</small></article>
             ))}
           </div>
         </section>
@@ -166,12 +170,16 @@ import pressureIcon from "../../assets/presion.svg";
       forecastList.innerHTML = daily.time.slice(0, 5).map((date, index) => {
         const condition = weatherInfo(daily.weather_code[index] ?? -1);
         const rain = daily.precipitation_probability_max[index] ?? 0;
-        return `<article class="forecast-card">
+        return `<article class="forecast-card" style="border: 1px solid black; border-radius: 10px; padding: 7px;">
           <p>${index === 0 ? "Hoy" : dayName(date)}</p>
           <span class="forecast-symbol" aria-hidden="true">${condition.symbol}</span>
-          <strong>${number(daily.temperature_2m_max[index] ?? 0)}°</strong>
-          <small>${number(daily.temperature_2m_min[index] ?? 0)}°</small>
-          <em>${number(rain)}% lluvia</em>
+          <strong> Temp. max: ${number(daily.temperature_2m_max[index] ?? 0)}°</strong>
+          
+          <p>Temp. mín: <small>${number(daily.temperature_2m_min[index] ?? 0)}°</small></p>
+          
+          <p><em>${number(rain)}% lluvia</em></p>
+          
+          
           <span class="sr-only">${condition.label}</span>
         </article>`;
       }).join("");
@@ -537,6 +545,10 @@ import pressureIcon from "../../assets/presion.svg";
     border-radius: 18px;
     background: var(--white);
     padding: 15px;
+    border: 1px solid black;
+    border: 1px solid black;
+  border-radius: 10px;
+  padding: 7px;
   }
 
   .forecast-card p {
@@ -854,7 +866,7 @@ import pressureIcon from "../../assets/presion.svg";
     object-fit: contain;
   }
 
-  .weather-sun { top: 0; right: 22px; width: 145px; height: 140px; }
+  .weather-sun { top: -72px; right: 10px; width: 145px; height: 140px; }
   .weather-cloud { right: 0; bottom: 4px; width: 110px; height: 58px; }
 
   .temperature {
