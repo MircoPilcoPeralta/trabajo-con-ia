@@ -7,22 +7,45 @@ export interface TutorialVideo {
   youtubeId: string | null;
 }
 
-// Replace each null value with the YouTube video ID to activate its iframe.
 export const tutorialVideos: TutorialVideo[] = [
   {
     id: "senamhi",
-    title: "Cómo consultar el pronóstico oficial",
-    platform: "SENAMHI Bolivia",
-    description: "Recorrido por departamentos, estaciones, pronóstico diario, extendido y alertas meteorológicas.",
-    duration: "Video pendiente",
-    youtubeId: null,
+    title: "Guía de uso de página SENAMHI Bolivia UA SACABA 5° año",
+    platform: "YouTube",
+    description: "",
+    duration: "",
+    youtubeId: "0f1yuEv-DRQ",
   },
   {
     id: "ventusky",
-    title: "Cómo interpretar un mapa dinámico",
-    platform: "Ventusky",
-    description: "Búsqueda de ciudades, selección de capas, línea temporal y lectura de escalas meteorológicas.",
-    duration: "Video pendiente",
-    youtubeId: null,
+    title: "Guía de uso página Ventusky",
+    platform: "YouTube",
+    description: "",
+    duration: "",
+    youtubeId: "Qq7Yh6J_q6g",
+  },
+  {
+    id: "nasa-earth-data",
+    title: "Guía de uso página NASA Earth Data",
+    platform: "YouTube",
+    description: "",
+    duration: "",
+    youtubeId: "r29sAoQECdE",
+  },
+  {
+    id: "copernicus",
+    title: "Guía de uso página Copernicus",
+    platform: "YouTube",
+    description: "",
+    duration: "",
+    youtubeId: "ozXS9_pQMq4",
+  },
+  {
+    id: "earth-nullschool",
+    title: "Guía de uso página Earth Nullschool",
+    platform: "YouTube",
+    description: "",
+    duration: "",
+    youtubeId: "HWHfBQhnL5M",
   },
 ];
