@@ -49,7 +49,10 @@ import { CITIES } from "../lib/openMeteo";
       </div>
 
       <div class="study-viewer-callout">
-        <button style="margin: auto;" id="study-open" class="button button-accent" type="button">Comparaciones de datos</button>
+        <div class="study-actions">
+          <button id="study-open" class="button button-accent" type="button">Comparaciones de datos</button>
+          <a class="button study-captures" href="https://drive.google.com/drive/folders/1_EwtZn_4a-eSIE_ETLUqvJheBkUAckPQ" target="_blank" rel="noopener">Capturas</a>
+        </div>
       </div>
     </div>
   </section>
@@ -162,7 +165,7 @@ import { CITIES } from "../lib/openMeteo";
   .interpret-grid span { color:var(--blue); font-size:.7rem; font-weight:900; }
   .interpret-grid h3 { margin:20px 0 7px; color:var(--navy); }
    .interpret-grid p { margin:0; color:var(--muted); font-size:.82rem; }
-   .study-viewer-callout { display:flex; align-items:center; justify-content:space-between; gap:28px; margin-top:24px; border-radius:22px; background:var(--blue-soft); padding:clamp(24px,4vw,38px); }
+   .study-viewer-callout { display:flex; align-items:center; justify-content:space-between; gap:28px; margin-top:24px; border-radius:22px; background:var(--blue-soft); padding:clamp(24px,4vw,38px); }.study-actions { display:flex; flex-wrap:wrap; gap:12px; }.study-captures { border-color:var(--blue); background:var(--white); color:var(--blue); }
    .study-viewer-callout .eyebrow { margin:0; } .study-viewer-callout h2 { margin:5px 0 8px; color:var(--navy); } .study-viewer-callout p:last-child { margin:0; color:var(--muted); }
    .study-viewer { width:min(1100px,94vw); max-height:92vh; overflow:auto; border:0; border-radius:22px; padding:0; box-shadow:0 24px 80px rgba(0,0,0,.35); }
    .study-viewer::backdrop { background:rgba(7,27,51,.75); backdrop-filter:blur(4px); }.study-viewer-header { position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; z-index:1; background:var(--white); padding:16px 20px; }.study-viewer-header h2 { margin:0; color:var(--navy); font-size:1.2rem; }.study-viewer-header button { width:38px; height:38px; border:0; border-radius:50%; background:var(--surface); color:var(--navy); cursor:pointer; font-size:1.7rem; line-height:1; }.study-pdf { display:block; width:100%; height:min(78vh,1000px); border:0; background:var(--white); }.study-pdf p { padding:24px; }
